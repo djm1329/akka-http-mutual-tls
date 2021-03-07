@@ -50,7 +50,7 @@ Press RETURN to stop...
 
 Notice the server protocol has changed to https, and the port is now 8443. Try to curl the new server instance:
 ```
-$ https://localhost:8443/status
+$ curl https://localhost:8443/status
 ```
 
 you will get a response similar to
