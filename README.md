@@ -115,7 +115,9 @@ Hello from Akka HTTP!!
 
 The certificates and trustore for this demo have been set up according to recipes [here](https://lightbend.github.io/ssl-config/CertificateGeneration.html). The slight modifications required are
 1. the server certificate must be generated for CN=localhost instead of CN=example.com in order that the client's authentication of the server (running at localhost) passes.
-2. The client CA certificate must be added to the keystore used by the server, in order that the server can validate the cleiint's certificate.
+2. The client CA certificate must be added to the keystore used by the server, in order that the server can validate the client's certificate.
+
+
 
 
 

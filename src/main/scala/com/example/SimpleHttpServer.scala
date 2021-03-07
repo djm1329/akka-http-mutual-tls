@@ -1,17 +1,13 @@
 package com.example
 
-import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.HttpMethods._
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-
 import java.io.InputStream
 import java.security.{ KeyStore, SecureRandom }
 import javax.net.ssl.{ KeyManagerFactory, SSLContext, TrustManagerFactory }
+
+import akka.actor.ActorSystem
+import akka.http.scaladsl.model._
+import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.{ ConnectionContext, Http, HttpsConnectionContext }
-import com.typesafe.sslconfig.akka.AkkaSSLConfig
 
 import scala.io.StdIn
 import io.AnsiColor._
@@ -29,16 +25,12 @@ object SimpleHttpServer extends App {
   val port = if(useTLS) 8443 else 8080
 
   val password: Array[Char] = "bTNbuHwy7c".toCharArray // do not store passwords in code, read them from somewhere safe!
-
   val ks: KeyStore = KeyStore.getInstance("JKS")
   val keystore: InputStream = getClass.getClassLoader.getResourceAsStream("example.com.jks")
-
   require(keystore != null, "Keystore required!")
   ks.load(keystore, password)
-
   val keyManagerFactory: KeyManagerFactory = KeyManagerFactory.getInstance("SunX509")
   keyManagerFactory.init(ks, password)
-
   val tmf: TrustManagerFactory = TrustManagerFactory.getInstance("SunX509")
   tmf.init(ks)
 
