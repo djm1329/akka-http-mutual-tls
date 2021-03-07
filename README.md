@@ -8,19 +8,25 @@ A basic example of setting up [Akka HTTP](https://doc.akka.io/docs/akka-http/cur
 
 ## Plain HTTP with no encryption or authentication
 
-Out of the box the app runs a basic unencrypted HTTP server on port 8080:
-
-```
+Out of the box the app runs a basic unencrypted HTTP server on port 8080. Navigate to the project's top-level directory and run:
+```bash
 sbt run
 ```
-
 should result in 
-
 ```
 Server online at http://localhost:8080
 
 Press RETURN to stop...
 ```
+Use curl from another terminal to check it works:
+```
+curl http://localhost:8080/status
+```
+should answer
+```
+Hello from Akka HTTP!!
+```
+
 
 
 
