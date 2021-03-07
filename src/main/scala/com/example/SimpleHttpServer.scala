@@ -20,8 +20,11 @@ object SimpleHttpServer extends App {
   implicit val system = ActorSystem()
   implicit val executionContext = system.dispatcher
 
-  val useTLS = true
-  val requireMutualAuth = true
+  val config = system.settings.config
+
+  val useTLS = config.getBoolean("sample-app.enable-tls")
+  val requireMutualAuth = config.getBoolean("sample-app.require-mutual-authentication")
+
   val host = "localhost"
   val port = if(useTLS) 8443 else 8080
 

@@ -6,4 +6,21 @@ A basic example of setting up [Akka HTTP](https://doc.akka.io/docs/akka-http/cur
 
 **Warning** This project contains sample preconfigurued truststore including certifications, key pairs, and uses a hardcoded password. Do not use these in production, they are a demo sample only!!!! You have been warned.
 
+## Plain HTTP with no encryption or authentication
+
+Out of the box the app runs a basic unencrypted HTTP server on port 8080:
+
+```
+sbt run
+```
+
+should result in 
+
+```
+Server online at http://localhost:8080
+
+Press RETURN to stop...
+```
+
+
 
